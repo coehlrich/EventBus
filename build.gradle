@@ -52,18 +52,7 @@ allprojects {
     }
     
     // Hack eclipse into knowing that the gradle deps are modules
-    eclipse {
-        classpath {
-            containers 'org.eclipse.buildship.core.gradleclasspathcontainer'
-            file {
-                whenMerged {
-                    entries.findAll { it.kind == 'con' && it.path == 'org.eclipse.buildship.core.gradleclasspathcontainer' }.each {
-                        it.entryAttributes['module'] = 'true'
-                    }
-                }
-            }
-        }
-    }
+    
 }
 
 changelog {
