@@ -77,9 +77,13 @@ public class EventListenerHelper
             Event event = (Event) ctr.newInstance();
             return event.getListenerList();
         }
-        catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e)
+        catch (InstantiationException | IllegalAccessException | InvocationTargetException e)
         {
             throw new RuntimeException("Error computing listener list for " + eventClass.getName(), e);
+        }
+        catch (NoSuchMethodException e)
+        {
+            return computeListenerList(eventClass, true);
         }
     }
 

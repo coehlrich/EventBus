@@ -23,7 +23,7 @@ public class EventFiringEventTest implements ITestHandler {
         AtomicBoolean handled1 = new AtomicBoolean(false);
         AtomicBoolean handled2 = new AtomicBoolean(false);
         bus.addListener(EventPriority.NORMAL, false, Event1.class, (event1) -> {
-            bus.post(new AbstractEvent.Event2());
+            bus.post(new AbstractEvent.Event2(0));
             handled1.set(true);
         });
         bus.addListener(EventPriority.NORMAL, false, AbstractEvent.Event2.class, (event2) -> {
@@ -39,6 +39,8 @@ public class EventFiringEventTest implements ITestHandler {
     public static class Event1 extends Event {}
 
     public static abstract class AbstractEvent extends Event {
-        public static class Event2 extends AbstractEvent {}
+        public static class Event2 extends AbstractEvent {
+            public Event2(int num) {}
+        }
     }
 }

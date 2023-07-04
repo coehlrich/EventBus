@@ -8,12 +8,6 @@ public class EventWithData extends Event
     private final int foo;
     private final boolean bar;
 
-    // This constructor is needed for events if they do not pass through the transformer
-    public EventWithData()
-    {
-        this(null, 0, false);
-    }
-
     public EventWithData(String data, int foo, boolean bar)
     {
         this.data = data;
